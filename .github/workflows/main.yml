@@ -15,7 +15,7 @@ jobs:
     secrets: inherit
 
   production:
-    if:  ${{ github.event.action  == 'push' &&  github.ref_name == 'main' }}
+    if:  ${{ github.event_name  == 'push' &&  github.ref_name == 'main' }}
     uses: ./.github/workflows/workflow.yml
     with:
       environment: production
