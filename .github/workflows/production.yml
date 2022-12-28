@@ -1,0 +1,50 @@
+name: 'Teste DevOps Coodesh'
+
+on:
+  workflow_dispatch:
+  
+permissions:
+  contents: read
+
+env:
+  region: us-east-2
+  environment: production
+  appName: calculator
+
+jobs:
+  build:
+    name: 'Build'
+    runs-on: ubuntu-latest
+    environment: production
+
+    defaults:
+      run:
+        shell: bash
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+      with:
+        submodules: true
+    
+    - name: Remove tag homepage
+      run: |
+        cd calculator
+        sed -i '/homepage/d' package.json
+
+    - name: Setup Node
+      uses: actions/setup-node@v3
+      with:
+        node-version: 14.21.2
+
+    - name: Build
+      run: |
+        cd calculator
+        npm install
+        npm run build
+    
+    - name: Artifacts
+      uses: actions/upload-artifact@v3
+      with:
+        name: build
+        path: calculator/build/
