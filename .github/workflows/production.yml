@@ -1,7 +1,9 @@
-name: 'Teste DevOps Coodesh'
+name: 'Teste DevOps Coodesh - Production'
 
 on: 
-  workflow_dispatch:
+  push:
+    branches:
+      - main
   
 permissions:
   contents: read
