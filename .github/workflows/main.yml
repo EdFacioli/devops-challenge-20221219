@@ -4,7 +4,7 @@ name: Teste DevOps Coodesh
 on:
   push:
     branches:
-      - '*'
+      - '**'
   workflow_dispatch:
 
 jobs:
