@@ -1,6 +1,6 @@
 name: 'Teste DevOps Coodesh'
 
-on:
+on: 
   workflow_dispatch:
   
 permissions:
