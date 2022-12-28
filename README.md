@@ -50,7 +50,7 @@ Rodei o terraform, criei o bucket, e após isso sincronizei o conteúdo de build
 
 ## Processo de desenvolvimento do projeto - Github Actions
 
-Adicionei o diretório .github/workflows ao projeto, esse passo é necessário para utilizar o **Github Actions**. Utilizei o método de [workflows reusing](https://docs.github.com/en/actions/using-workflows/reusing-workflows). O arquivo *main.yml* dispara toda vez que há um evento de push, ele chama o *workflow.yml* que é um workflow reutilizavel. *main.yml* seta para dois ambientes, staging e production.
+Adicionei o diretório .github/workflows ao projeto, esse passo é necessário para utilizar o **Github Actions**. Utilizei o método de [workflows reusing](https://docs.github.com/en/actions/using-workflows/reusing-workflows). O arquivo *main.yml* dispara toda vez que há um evento de push, para qualquer branch existente no diretório, ele chama o *workflow.yml* que é um workflow reutilizavel. O *main.yml* seta para dois jobs um para o ambiente de staging e outro para ambiente de production.
 
 1. Primeiro job: **build** - nesse job é realizada a contrução do aplicativo, nesse job salvo o artifact do build gerado, nesse job precisei remover por meio de sed a chave *"homepage"* para que construisse sem o path *"calculator/"*
 2. Segundo job: **bucket** - aqui é criado o bucket s3
