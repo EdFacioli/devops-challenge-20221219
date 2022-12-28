@@ -55,10 +55,3 @@ Adicionei o diretório .github/workflows ao projeto, esse passo é necessário p
 1. Primeiro job: **build** - nesse job é realizada a contrução do aplicativo, nesse job salvo o artifact do build gerado, nesse job precisei remover por meio de sed a chave *"homepage"* para que construisse sem o path *"calculator/"*
 2. Segundo job: **bucket** - aqui é criado o bucket s3
 3. Terceiro job: **deploy** - no job é feito uso do artifact gerado no primeiro job, build, e sincronizado com o bucket criado no job bucket;
-
-
-
-
-
-
-
