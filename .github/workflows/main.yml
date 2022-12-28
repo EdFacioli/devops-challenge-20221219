@@ -1,0 +1,22 @@
+
+name: Teste DevOps Coodesh
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  staging:
+    uses: ./.github/workflows/workflow.yml
+    with:
+      environment: staging
+    secrets: inherit
+
+  production:
+    if: ${{ github.event_name }} == 'push'
+    uses: ./.github/workflows/workflow.yml
+    with:
+      environment: production
+    secrets: inherit
